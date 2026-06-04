@@ -88,6 +88,13 @@ GhoulSight is a high-performance XSS vulnerability scanner that combines traditi
 - **Form Extraction** — Discovers and tests GET/POST form parameters
 - **Link Discovery** — Extracts links from `href`, `src`, `action`, `data-url`, `data-href` attributes
 
+### Path-Based XSS Detection
+- **Auto-Detection** — Automatically detects when URL path segments reflect input in the response
+- **Path Segment Injection** — Injects payloads into URL path segments (not just query parameters)
+- **Smart Path Replacement** — Replaces or appends payloads to the last path segment based on URL structure
+- **Batch Processing** — Processes payloads in batches for efficient scanning
+- **Multi-Encoding Reflection Check** — Checks for reflection across exact, URL-decoded, URL-encoded, and double-encoded variants
+
 ### Input Methods
 - Single URL (`-u`)
 - URL list file (`-l`)
