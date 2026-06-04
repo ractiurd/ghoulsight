@@ -248,7 +248,7 @@ GhoulSight uses a subscription-based licensing model.
 
 ### Subscription
 - **30-day license** per activation
-- Activation is machine-bound (fingerprinted via hostname + machine ID)
+- Activation is machine-bound
 - To activate:
   1. Run `./ghoulsight --activate`
   2. Send the displayed **Request Key** to [@ractiurd](https://t.me/ractiurd) on Telegram
