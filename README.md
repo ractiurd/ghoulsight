@@ -1,10 +1,10 @@
-# 👻 GhoulSight
+# GhoulSight
 
 [![Go Version](https://img.shields.io/badge/Go-1.25+-00ADD8?style=flat-square&logo=go)](https://go.dev)
 [![License](https://img.shields.io/badge/License-Proprietary-red?style=flat-square)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Linux-FCC624?style=flat-square&logo=linux)]()
 
-**Professional XSS Scanner – Zero False Positives, Browser‑Verified Results**
+**Precision XSS Detection. Real Findings. Zero Noise.**
 
 > *GhoulSight Walks the Graveyard — XSS That Moves Leaves a Shadow*
 
@@ -12,12 +12,17 @@
 
 ## Overview
 
-GhoulSight is a high‑performance XSS vulnerability scanner that combines traditional scanning techniques with advanced payload generation and **real‑browser verification** – every reported finding is executed in a headless browser to **eliminate false positives**.
+GhoulSight is built to hunt XSS where others only look.
 
-Built for security researchers, penetration testers, and bug bounty hunters, GhoulSight supports **Reflected**, **DOM‑based**, **Context‑Aware**, and **Fuzz** scanning modes, plus domain crawling, bulk URL processing, and persistent result storage.
+Designed for security researchers, penetration testers, and bug bounty hunters, it goes beyond basic parameter testing to uncover **Reflected, DOM-based, Context-Aware, Path-Based, POST, and fuzzing attack surfaces**.
 
-> **Original script by:** Nishan Fiyaz  
-> **Rebuilt & upgraded by:** Mahedi Hasan ([@ractiurd](https://t.me/ractiurd))
+GhoulSight maps the target, follows reflections, analyzes injection contexts, mutates payloads, and pushes deeper into the application to uncover vulnerabilities hidden behind complex inputs and filtering.
+
+From a single URL to large-scale target lists and full-domain discovery, GhoulSight is built for one purpose:
+
+**Hunt deeper. Test harder. Find what hides in the shadows.**
+
+*Every reflection leaves a trace. GhoulSight follows it.*
 
 ---
 
