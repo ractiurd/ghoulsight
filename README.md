@@ -1,226 +1,223 @@
-<div align="center">
-
-## FREE PALESTINE
-
-**Israel is a rogue terrorist state committing genocide in Gaza. Ethnic cleansing. Mass murder of women, children, and civilians.**
-**Bombing hospitals. Destroying homes. Starving an entire population. Erasing entire bloodlines from existence.**
-**Now attacking Lebanon. Now striking Iran. All backed, funded, and armed by the United States of America.**
-**Two terror states working together — one drops the bombs, the other signs the checks.**
-
-**This is not self-defense. This is apartheid. This is occupation. This is terrorism sponsored by a superpower.**
-**The world watches. The world stays silent. We will not.**
-**Every government that shakes hands with Israel has blood on its hands. Every politician who stays silent is complicit.**
-**No amount of Western media propaganda will wash away the blood of tens of thousands of innocent Palestinians.**
-**Remove the blanket from your eyes. Stop believing the lies fed to you by corrupt media. Verify the facts yourself.**
-**Open your eyes — the evidence is everywhere. The mass graves. The flattened cities. The children buried under rubble.**
-**This is real. This is happening now. And your silence makes you part of it.**
-**Boycott every company that funds this genocide. Boycott every product that feeds this war machine.**
-**Your money is their weapons. Stop funding your own humanity's destruction.**
-**Stand up. Speak out. Or history will remember you as the ones who watched and did nothing.**
-**Donate as much as you can. Every dollar feeds a starving child. Every donation rebuilds a destroyed home. Every contribution saves a life.**
-
-**WE STAND WITH PALESTINE.**
-
-From the river to the sea, Palestine will be free.
-
-</div>
-
----
-
-<div align="center">
-
-```
- ██████╗ ██╗  ██╗ ██████╗ ██╗   ██╗██╗     ███████╗██╗ ██████╗ ██╗  ██╗████████╗
-██╔════╝ ██║  ██║██╔═══██╗██║   ██║██║     ██╔════╝██║██╔════╝ ██║  ██║╚══██╔══╝
-██║  ███╗███████║██║   ██║██║   ██║██║     ███████╗██║██║  ███╗███████║   ██║   
-██║   ██║██╔══██║██║   ██║██║   ██║██║     ╚════██║██║██║   ██║██╔══██║   ██║   
-╚██████╔╝██║  ██║╚██████╔╝╚██████╔╝███████╗███████║██║╚██████╔╝██║  ██║   ██║   
- ╚═════╝ ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚══════╝╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   
-```
-
-### Ghoulsight Walks the Graveyard — XSS That Moves, Leaves a Shadow
+# 👻 GhoulSight
 
 [![Go Version](https://img.shields.io/badge/Go-1.25+-00ADD8?style=flat-square&logo=go)](https://go.dev)
-[![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
+[![License](https://img.shields.io/badge/License-Proprietary-red?style=flat-square)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Linux-FCC624?style=flat-square&logo=linux)]()
 
-**Advanced XSS Scanner with Zero False Positives**
+**Professional XSS Scanner – Zero False Positives, Browser‑Verified Results**
 
-[Features](#-features) · [Installation](#-installation) · [Usage](#-usage) · [Modes](#-scan-modes) · [License](#-licensing)
-
-</div>
+> *GhoulSight Walks the Graveyard — XSS That Moves Leaves a Shadow*
 
 ---
 
 ## Overview
 
-GhoulSight is a high-performance XSS vulnerability scanner that combines traditional scanning techniques with advanced payload generation to deliver **verified results with zero false positives**. Unlike other scanners that rely solely on reflection detection, GhoulSight validates every XSS finding through real execution.
+GhoulSight is a high‑performance XSS vulnerability scanner that combines traditional scanning techniques with advanced payload generation and **real‑browser verification** – every reported finding is executed in a headless browser to **eliminate false positives**.
 
-> **Original Script:** Nishan Fiyaz  
-> **Rebuilt & Upgraded:** Mahedi Hasan ([@ractiurd](https://t.me/ractiurd))
+Built for security researchers, penetration testers, and bug bounty hunters, GhoulSight supports **Reflected**, **DOM‑based**, **Context‑Aware**, and **Fuzz** scanning modes, plus domain crawling, bulk URL processing, and persistent result storage.
+
+> **Original script by:** Nishan Fiyaz  
+> **Rebuilt & upgraded by:** Mahedi Hasan ([@ractiurd](https://t.me/ractiurd))
 
 ---
 
-## Features
+## ✨ Features
 
 ### Core Scanner
-- **Verified Results** — Every XSS finding is verified through real execution, eliminating false positives entirely
-- **Smart Scan** — Stops testing a URL after the first confirmed XSS is found, saving time and resources
-- **Multi-Mode Scanning** — Reflected, DOM, Context-Aware, and Fuzz modes (run individually or combined)
-- **URL Probing** — Pre-validates URLs before scanning to skip dead targets
-- **Reflection Cache** — Caches reflection results to avoid redundant parameter testing
-- **Two-Phase Scanning** — Custom payloads first, then falls back to default payloads for URLs with no findings
+- **Zero False Positives** – Every XSS is triggered in a headless browser before reporting.
+- **Smart Scan** – Stops testing a URL after the first confirmed XSS, saving time.
+- **Multiple Modes** – Reflected, DOM, Context‑Aware, and Fuzz (can be combined).
+- **URL Probing** – Pre‑validates URLs to skip dead targets.
+- **Reflection Cache** – Avoids redundant testing of already‑reflected parameters.
+- **Two‑Phase Scanning** – Custom payloads first, then fallback to defaults.
 
-### Context-Aware Engine (Mode `c`)
-- **AI-Powered Context Detection** — Analyzes injection context (HTML attribute, JavaScript, CSS, URL, etc.) and generates context-specific payloads
-- **Mutation Engine** — Automatically applies encoding, syntax, breakout, grammar, and interaction-based mutations to maximize bypass rates
-- **Adaptive Learning** — Tracks successful mutation patterns across scans, learns WAF bypass techniques, and persists knowledge for future runs
-
+### Context‑Aware Engine (Mode `c`)
+- **AI‑Powered Context Detection** – Identifies injection context (HTML attribute, JavaScript, CSS, URL, etc.) and generates context‑specific payloads.
+- **Mutation Engine** – Automatically applies encoding, syntax, breakout, grammar, and interaction‑based mutations to maximise bypass rates.
+- **Adaptive Learning** – Tracks successful mutation patterns across sessions and persists knowledge for future runs.
 
 ### Fuzz Scanner (Mode `f`)
-- **FUZZ Keyword Support** — Replace any part of a URL, header, cookie, or form data with `FUZZ` for position-specific testing
-- **Attack Modes** — Single, Cluster Bomb, and Pitchfork (ffuf-style multi-position fuzzing)
-- **Auto-Detection** — Automatically switches to fuzz mode when `FUZZ` keyword is detected
+- **FUZZ Keyword Support** – Replace any part of URL, header, cookie, or form data with `FUZZ`.
+- **Attack Modes** – Single, Cluster Bomb, and Pitchfork (ffuf‑style multi‑position fuzzing).
+- **Auto‑Detection** – Automatically switches to fuzz mode when `FUZZ` is detected.
 
 ### Crawling & Discovery
-- **Domain Crawler** — Automatically discovers URLs with parameters from a target domain
-- **Configurable Depth** — Crawl depth control (default: 2)
-- **Form Extraction** — Discovers and tests GET/POST form parameters
-- **Link Discovery** — Extracts links from `href`, `src`, `action`, `data-url`, `data-href` attributes
+- **Domain Crawler** – Discovers URLs with parameters from a target domain.
+- **Configurable Depth** – Control crawl depth (default 2).
+- **Form Extraction** – Finds and tests GET/POST form parameters.
+- **Link Discovery** – Extracts links from `href`, `src`, `action`, `data‑url`, `data‑href`.
 
-### Path-Based XSS Detection
-- **Auto-Detection** — Automatically detects when URL path segments reflect input in the response
-- **Path Segment Injection** — Injects payloads into URL path segments (not just query parameters)
-- **Smart Path Replacement** — Replaces or appends payloads to the last path segment based on URL structure
-- **Batch Processing** — Processes payloads in batches for efficient scanning
-- **Multi-Encoding Reflection Check** — Checks for reflection across exact, URL-decoded, URL-encoded, and double-encoded variants
+### Path‑Based XSS Detection
+- **Auto‑Detection** – Recognises when URL path segments reflect input in the response.
+- **Path Segment Injection** – Injects payloads into URL path segments (not just query parameters).
+- **Smart Replacement** – Replaces or appends payloads to the last segment based on URL structure.
+- **Batch Processing** – Processes payloads in batches for efficiency.
+- **Multi‑Encoding Reflection Check** – Tests exact, URL‑decoded, URL‑encoded, and double‑encoded variants.
 
 ### Input Methods
 - Single URL (`-u`)
 - URL list file (`-l`)
-- Raw HTTP request file (`-r`) — sqlmap-style request parsing
+- Raw HTTP request file (`-r`) – sqlmap‑style parsing
 - Domain crawling (`--domain`)
 - Stdin piping
 
 ### Output & Notifications
-- **Real-Time Progress** — Live progress bar with URL count, payload count, and confirmed findings
-- **PoC Generation** — Generates ready-to-use Proof of Concept URLs and raw requests
-- **Telegram Integration** — Receive real-time scan notifications and confirmed XSS alerts via Telegram bot
-- **File Output** — Save all results to file (`-o`)
+- **Real‑Time Progress** – Live progress bar with counts.
+- **PoC Generation** – Generates ready‑to‑use Proof‑of‑Concept URLs and raw requests.
+- **Telegram Integration** – Receive real‑time scan notifications and confirmed XSS alerts.
+- **File Output** – Save results (`-o`) and generate an interactive HTML report.
 
 ---
 
-## Installation
+## 📦 Installation
 
 ### Prerequisites
-- **Chromium-based browser** (Google Chrome, Chromium, or Brave must be installed)
 - **Linux** (currently supported platform)
+- **Chromium‑based browser** (Google Chrome, Chromium, or Brave) – required for headless verification.
 
-> **Note:** GhoulSight requires a Chromium-based browser to be installed on your system. Install via:
-> ```bash
-> # Debian/Ubuntu
-> sudo apt install chromium-browser
-> 
-> # Arch Linux
-> sudo pacman -S chromium
-> 
-> # Or install Google Chrome
-> wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-> sudo dpkg -i google-chrome-stable_current_amd64.deb
-> ```
+```bash
+# Debian/Ubuntu
+sudo apt install chromium-browser
+
+# Arch Linux
+sudo pacman -S chromium
+
+# Or install Google Chrome
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+````
 
 ### Download & Run
 
-```bash
+bash
+
+```
 # Clone the repository
-git clone https://github.com/ractiurd/ghoulsight.git
+git clone https://github.com/ractiurd/GhoulSight.git
+cd GhoulSight
 
-# Go to the directory
-cd ghoulsight
-
-# Make the build executable
+# Make the binary executable (if using pre‑built)
 chmod +x ghoulsight
 
-# Run it
+# First run – trial mode (300 runs)
 ./ghoulsight -u "https://example.com/page?id=1" -m r
 ```
 
-### First Run
+### Build from Source
 
-```bash
-# On first run, GhoulSight starts in trial mode (300 trial runs)
-./ghoulsight -u "https://example.com/page?id=1" -m r
+bash
 
-# To activate a subscription:
-./ghoulsight --activate
+```
+go build -o ghoulsight .
 ```
 
 ---
 
-## Usage
+## 🚀 Usage
+
+bash
 
 ```
-USAGE:
-    ghoulsight -u <url> -m <mode> [options]
-    ghoulsight -l <file> -m <mode> [options]
-    ghoulsight --domain <domain> --depth 3 -m r,d,c
-    ghoulsight -r request.txt --file payloads.txt -v
-    ghoulsight --activate <key>
+./ghoulsight -u <url> -m <mode> [options]
+./ghoulsight -l <file> -m <mode> [options]
+./ghoulsight --domain <domain> --depth 3 -m r,d,c
+./ghoulsight -r request.txt --file payloads.txt -v
+```
 
-TARGET:
-    -u <url>              Single URL to scan
-    -l <file>             URL list file
-    -r <file>             Load raw HTTP request from file (sqlmap-style)
-    --domain <domain>     Domain to crawl (auto-discovers URLs)
-    stdin                 Pipe URLs via stdin
+### Command‑Line Flags
 
-SCAN OPTIONS:
-    -m <mode>             Scan mode(s): r, d, c, f (comma-sep, default: r)
-    --file <path>         Custom payload file or folder
-    -t <int>              Concurrent threads (default: 10)
-    -T, --timeout <int>   Request timeout in seconds (default: 15)
-    --depth <int>         Crawl depth (default: 2)
-    -v, --verbose         Show detailed scan progress
-    -o <file>             Save results to file
-    -p, --probe           Probe URLs before scanning (default: true)
-    --rc                  Reflection check only (no XSS testing)
+#### Target
 
-NETWORK:
-    --cookies <str>       Custom cookies (e.g., 'session=abc; token=xyz')
-    -H <str>              Custom headers (e.g., 'Authorization: Bearer tok')
-    --data <str>          Form data for POST scanning (e.g., 'user=test')
+| **FlagDescription** |                                                |
+| ------------------- | ---------------------------------------------- |
+| `-u <url>`          | Single URL to scan                             |
+| `-l <file>`         | URL list file (one per line)                   |
+| `-r <file>`         | Load raw HTTP request from file (sqlmap‑style) |
+| `--domain <domain>` | Domain to crawl (auto‑discovers URLs)          |
+| `stdin`             | Pipe URLs via stdin                            |
 
-FUZZING:
-    --fuzz-mode <mode>    Attack mode: single, cluster, pitchfork (default: single)
-    --fuzz-replace <kw>   Custom FUZZ keyword (default: FUZZ)
+#### Scan Options
 
-NOTIFICATIONS:
-    --telegram            Setup Telegram bot notifications (interactive)
-    --activate <key>      Activate subscription with activation key
+| **FlagDescription**   |                                                                  |
+| --------------------- | ---------------------------------------------------------------- |
+| `-m <mode>`           | Scan mode(s): `r`, `d`, `c`, `f` (comma‑separated, default: `r`) |
+| `--file <path>`       | Custom payload file or folder                                    |
+| `-t <int>`            | Concurrent threads (default: 10)                                 |
+| `-T, --timeout <int>` | Request timeout in seconds (default: 15)                         |
+| `--depth <int>`       | Crawl depth (default: 2)                                         |
+| `-v, --verbose`       | Show detailed scan progress                                      |
+| `-o <file>`           | Save results to file (also generates HTML report)                |
+| `-p, --probe`         | Probe URLs before scanning (default: true)                       |
+| `--rc`                | Reflection check only (no XSS testing)                           |
+
+#### Network
+
+| **FlagDescription** |                                                      |
+| ------------------- | ---------------------------------------------------- |
+| `--cookies <str>`   | Custom cookies (e.g., `'session=abc; token=xyz'`)    |
+| `-H <str>`          | Custom headers (e.g., `'Authorization: Bearer tok'`) |
+| `--data <str>`      | Form data for POST scanning (e.g., `'user=test'`)    |
+
+#### Fuzzing
+
+| **FlagDescription**   |                                                                   |
+| --------------------- | ----------------------------------------------------------------- |
+| `--fuzz-mode <mode>`  | Attack mode: `single`, `cluster`, `pitchfork` (default: `single`) |
+| `--fuzz-replace <kw>` | Custom FUZZ keyword (default: `FUZZ`)                             |
+
+#### Notifications
+
+| **FlagDescription** |                                                |
+| ------------------- | ---------------------------------------------- |
+| `--telegram`        | Setup Telegram bot notifications (interactive) |
+| `--activate <key>`  | Activate subscription with activation key      |
+
+#### Examples
+
+bash
+
+```
+# Reflected XSS scan with custom headers
+./ghoulsight -u "https://example.com/page?id=1" -m r -H "Authorization: Bearer token"
+
+# DOM scan with verbose output
+./ghoulsight -u "https://example.com/search?q=test" -m d -v
+
+# Context‑aware scan with custom payloads
+./ghoulsight -u "https://example.com/profile?user=admin" -m c --file ./my_payloads/
+
+# Fuzz scan with cluster bomb mode
+./ghoulsight -u "https://example.com/api?param=FUZZ&other=value" -m f --fuzz-mode cluster
+
+# Crawl domain and scan with reflected + DOM
+./ghoulsight --domain example.com --depth 3 -m r,d -t 20
+
+# Bulk scan from list file
+./ghoulsight -l urls.txt -m r,d,c -o results.txt
 ```
 
 ---
 
-## Scan Modes
+## 🔍 Scan Modes
 
-| Mode | Flag | Description |
-|------|------|-------------|
-| **Reflected** | `r` | Traditional reflected XSS scanning. Includes POST form parameter testing. |
-| **DOM** | `d` | DOM-based XSS detection — analyzes page DOM for vulnerable sinks and sources. |
-| **Context-Aware** | `c` | AI-powered context detection. Analyzes injection context and generates context-specific payloads with mutation engine. Includes both GET and POST parameter testing. |
-| **Fuzz** | `f` | FUZZ keyword-based position scanning (ffuf-style). Supports single, cluster bomb, and pitchfork attack modes. |
+| **ModeFlagDescription** |     |                                                                             |
+| ----------------------- | --- | --------------------------------------------------------------------------- |
+| **Reflected**           | `r` | Traditional reflected XSS (GET/POST)                                        |
+| **DOM**                 | `d` | DOM‑based XSS detection                                                     |
+| **Context‑Aware**       | `c` | AI‑powered dynamic payload generation (does **not** require a payload file) |
+| **Fuzz**                | `f` | FUZZ keyword‑based scanning                                                 |
 
-Modes can be combined: `-m r,d,c` runs reflected, DOM, and context-aware scans simultaneously.
-
----
+> Modes can be combined: `-m r,d,c` runs all three simultaneously.
 
 ---
 
-## Payloads
+## 📁 Payload Configuration
 
-GhoulSight **does not** come with built-in default payloads. You must provide your own payload files.
+GhoulSight does **not** ship with default payloads – you must provide your own.
 
-Payload files are stored in `~/.config/ghoulsight/payloads/`:
+Payloads are stored in `~/.config/ghoulsight/payloads/`:
+
+text
 
 ```
 ~/.config/ghoulsight/payloads/
@@ -229,83 +226,155 @@ Payload files are stored in `~/.config/ghoulsight/payloads/`:
 └── post/         # POST form payloads
 ```
 
-Specify your payloads with `--file`:
-```bash
-# Single payload file
-ghoulsight -u 'https://target.com' --file custom_payloads.txt
+You can specify a custom file or folder with `--file`:
 
-# Payload folder
-ghoulsight -u 'https://target.com' --file ./my_payloads/
+bash
+
+```
+# Single file
+./ghoulsight -u 'https://target.com' --file custom_payloads.txt
+
+# Folder
+./ghoulsight -u 'https://target.com' --file ./my_payloads/
 ```
 
-> **Note:** The Context-Aware mode (`-m c`) generates payloads dynamically and does not require a payload file.
+> **Note:** Context‑Aware mode (`-m c`) generates payloads dynamically and does **not** require a payload file.
 
 ---
 
-## Licensing
+## 🏆 Comparison with Other XSS Scanners
 
-GhoulSight uses a subscription-based licensing model.
+| **FeatureGhoulSightDalfoxXSStrikeXSS0r** |     |   |   |   |
+| ---------------------------------------- | --- | - | - | - |
+| Browser‑verified (zero false positives)  | ✅   | ❌ | ❌ | ✅ |
+| Web UI with bulk scan queue              | ✅\* | ❌ | ❌ | ❌ |
+| Persistent result storage                | ✅\* | ❌ | ❌ | ❌ |
+| Path‑based XSS detection                 | ✅   | ✅ | ✅ | ✅ |
+| Context‑aware payload generation         | ✅   | ✅ | ✅ | ❌ |
+| Checkpoint & resume                      | ✅\* | ❌ | ❌ | ❌ |
+| Browser extension support                | ✅\* | ❌ | ❌ | ❌ |
+| Direct browser integration               | ✅\* | ❌ | ❌ | ❌ |
 
-> **100% of subscription proceeds go directly to Palestinian people.** By purchasing a license, you are not just supporting this tool — you are feeding a family, treating a wound, rebuilding what was destroyed.
+> \*Available in the **full version** – see Licensing for details.
+
+GhoulSight combines all these features into one professional, easy‑to‑use tool, and remains actively maintained.
+
+---
+
+## 📜 Licensing
+
+GhoulSight uses a subscription‑based licensing model.
+
+> **100% of every subscription fee is donated directly to the Palestinian people.**
+> Every license feeds a family, treats a wound, and helps rebuild destroyed homes.
 
 ### Trial Mode
-- **300 trial runs** on first installation — no activation required
-- Each run decrements the trial counter
-- Trial runs are preserved when activating a subscription
+
+- **300 trial runs** on first installation – no activation required.
+- Each run decrements the trial counter.
+- Trial runs are preserved when activating a subscription.
 
 ### Subscription
-- **30-day license** per activation
-- Activation is machine-bound
+
+- **30‑day license** per activation.
+- Machine‑bound activation.
 - To activate:
   1. Run `./ghoulsight --activate`
-  2. Send the displayed **Request Key** to [@ractiurd](https://t.me/ractiurd) on Telegram
-  3. Receive your **Activation Key** and enter it when prompted
+  2. Send the displayed **Request Key** to [@ractiurd](https://t.me/ractiurd) on Telegram.
+  3. Receive your **Activation Key** and enter it.
 
-```bash
+bash
+
+```
 # Interactive activation
 ./ghoulsight --activate
 
-# Activate with key (after receiving from admin)
+# Activate with key
 ./ghoulsight --activate <activation_key>
 ```
 
 ### Status Display
 
-| Status | Meaning |
-|--------|---------|
-| `SUBSCRIPTION ACTIVE` | Valid license — full access, trial counter preserved |
-| `TRIAL MODE` | No license installed — using trial runs |
-| `SUBSCRIPTION EXPIRED` | License expired — falls back to remaining trial runs |
-| `LICENSE EXPIRED` | No trial runs remaining — activation required |
+| **StatusMeaning**      |                                                      |
+| ---------------------- | ---------------------------------------------------- |
+| `SUBSCRIPTION ACTIVE`  | Valid license – full access, trial counter preserved |
+| `TRIAL MODE`           | No license – using trial runs                        |
+| `SUBSCRIPTION EXPIRED` | License expired – falls back to remaining trial runs |
+| `LICENSE EXPIRED`      | No trial runs – activation required                  |
 
 ---
 
-## Features Not Included in Public Release
+## 🇵🇸 We Stand with Palestine
 
-The following features are available in the **full version** and have been **removed** from this public release:
+\<div align="center"> \<strong>100% of every subscription fee is donated directly to the Palestinian people.\</strong> \</div>
 
-| Feature | Description |
-|---------|-------------|
-| **Web Server** | Built-in web server for hosting scan results and managing scans remotely (`--web --port 8080`) |
-| **Web UI Dashboard** | Browser-based interface for scan management, result viewing, and real-time monitoring |
-| **Chromium Extension** | Browser extension for in-page XSS testing and manual payload injection |
-| **Advanced WAF Evasion** | Enhanced WAF bypass techniques with automatic payload transformation |
+### The Reality We Cannot Ignore
+
+Across Palestine, Lebanon, and Iran, innocent civilians — especially children — are being slaughtered every single day. The United States and Israeli governments are jointly responsible for ongoing bombing campaigns, mass murder, and the systematic destruction of homes, hospitals, schools, and entire neighborhoods.
+
+They drop illegal white phosphorus on densely populated areas. They deploy banned cluster munitions in civilian zones. They fire precision‑guided missiles into refugee camps, schools, and UN shelters. They cut off water, electricity, food, and medicine to millions of men, women, and children. They assassinate journalists, doctors, and aid workers with impunity. They erase entire neighbourhoods, then pretend the world isn’t watching.
+
+> *“They call it ‘defense.’ We call it what it is: ethnic cleansing.”*
+
+### Key Statistics
+
+- 👶 **Over 15,000 children** killed since October 2023
+- 🏥 **Hospitals, schools, and UN shelters** deliberately targeted
+- 🚫 **Illegal weapons** like white phosphorus used in civilian areas
+- 📰 **Journalists and aid workers** assassinated with impunity
+
+### Our Message
+
+- 🏥 Hospitals are not military bases.
+- 📰 Journalists are not enemies.
+- 👶 Children are not targets.
+- ☠️ Genocide is not self‑defense.
+- ✋ Ethnic cleansing is not peace.
+
+### Take Action
+
+Every scan you run with GhoulSight helps fund real aid for real people. Your subscription is more than a tool — it’s a stand against genocide.
+
+👉 [**Donate via Subscription**](https://paypal.me/MahediHasan01/5)
+
+Or contact [@ractiurd](https://t.me/ractiurd) on Telegram for alternative payment methods.
+
+---
+
+## 🌐 Full Version (Not in Public Release)
+
+The public release excludes the following features (available in the full version):
+
+- **Web Server & Web UI** – Browser‑based dashboard for scan management and real‑time monitoring (`--web --port`).
+- **Chromium Extension** – In‑page XSS testing and manual payload injection.
+- **Advanced WAF Evasion** – Enhanced bypass techniques with automatic payload transformation.
 
 For access to the full version, contact [@ractiurd](https://t.me/ractiurd).
 
 ---
 
-## Technical Details
+## 👨‍💻 Credits
 
-- **Language:** Go 1.25
-- **Concurrency:** Thread-pooled scanning with configurable concurrency (`-t`)
-- **Adaptive Learning:** Persistent mutation success tracking across sessions
-- **Network Resilience:** Automatic retry on network interruptions
+- **Original Script:** Nishan Fiyaz
+- **Rebuilt & Upgraded:** Mahedi Hasan ([@ractiurd](https://t.me/ractiurd))
+- Contact: [@ractiurd](https://t.me/ractiurd) on Telegram
 
 ---
 
-<div align="center">
+## ⚠️ Disclaimer
 
-**GhoulSight** — XSS That Moves, Leaves a Shadow
+GhoulSight is intended for **authorised security testing only**. Users are responsible for complying with all applicable laws and obtaining proper authorisation before scanning any target.
 
-</div>
+---
+
+## 📄 License
+
+This project is **closed‑source** and commercially licensed. Unauthorised distribution, modification, or reverse engineering is prohibited.
+
+---
+
+\<p align="center"> \<sub>Built with ❤️ by \<a href="https\://t.me/ractiurd">Ractiurd\</a>\</sub> \</p> \`\`\`
+
+---
+
+Copy the entire block above, paste it into a new file, and save it as `README.md`.
