@@ -1,3 +1,5 @@
+<div align="center">
+
 # GhoulSight
 
 [![Go Version](https://img.shields.io/badge/Go-1.25+-00ADD8?style=flat-square&logo=go)](https://go.dev)
@@ -7,6 +9,8 @@
 **Precision XSS Detection. Real Findings. Zero Noise.**
 
 > *GhoulSight Walks the Graveyard — XSS That Moves Leaves a Shadow*
+
+</div>
 
 ---
 
@@ -103,118 +107,114 @@ cd GhoulSight
 
 # Make the binary executable (if using pre‑built)
 chmod +x ghoulsight
-
-# First run – trial mode (300 runs)
-./ghoulsight -u "https://example.com/page?id=1" -m r
 ```
 
-### Build from Source
-
-bash
-
-```
-go build -o ghoulsight .
-```
 
 ---
 
-## 🚀 Usage
+## Usage
 
-bash
 
-```
-./ghoulsight -u <url> -m <mode> [options]
-./ghoulsight -l <file> -m <mode> [options]
-./ghoulsight --domain <domain> --depth 3 -m r,d,c
-./ghoulsight -r request.txt --file payloads.txt -v
-```
-
-### Command‑Line Flags
+### Command-Line Flags
 
 #### Target
 
-| **FlagDescription** |                                                |
-| ------------------- | ---------------------------------------------- |
-| `-u <url>`          | Single URL to scan                             |
-| `-l <file>`         | URL list file (one per line)                   |
-| `-r <file>`         | Load raw HTTP request from file (sqlmap‑style) |
-| `--domain <domain>` | Domain to crawl (auto‑discovers URLs)          |
-| `stdin`             | Pipe URLs via stdin                            |
+| **Flag** | **Description** |
+| --- | --- |
+| `-u <url>` | Single URL to scan, or crawl root when used with `-crawl` |
+| `-l <file>` | URL list file (one URL per line) |
+| `-r <file>` | Load raw HTTP request from file (sqlmap-style) |
+| `--domain <domain>` | Domain to crawl and automatically discover URLs |
+| `-crawl` | Treat the `-u` target as a crawl root |
+| `stdin` | Pipe URLs via standard input |
 
 #### Scan Options
 
-| **FlagDescription**   |                                                                  |
-| --------------------- | ---------------------------------------------------------------- |
-| `-m <mode>`           | Scan mode(s): `r`, `d`, `c`, `f` (comma‑separated, default: `r`) |
-| `--file <path>`       | Custom payload file or folder                                    |
-| `-t <int>`            | Concurrent threads (default: 10)                                 |
-| `-T, --timeout <int>` | Request timeout in seconds (default: 15)                         |
-| `--depth <int>`       | Crawl depth (default: 2)                                         |
-| `-v, --verbose`       | Show detailed scan progress                                      |
-| `-o <file>`           | Save results to file (also generates HTML report)                |
-| `-p, --probe`         | Probe URLs before scanning (default: true)                       |
-| `--rc`                | Reflection check only (no XSS testing)                           |
+| **Flag** | **Description** |
+| --- | --- |
+| `-m <mode>` | Scan mode: `r`, `d`, `c`, or `f` (default: `r`) |
+| `--file <path>` | Custom payload file or folder |
+| `-t <int>` | Concurrent threads (default: `10`) |
+| `-T, --timeout <int>` | Request timeout in seconds (default: `15`) |
+| `--depth <int>` | Crawl depth (default: `2`) |
+| `-v, --verbose` | Show detailed scan progress |
+| `-o <file>` | Save scan results to file |
+| `-p, --probe` | Probe URLs before scanning (default: `true`) |
+| `--rc` | Reflection check only (no XSS testing) |
+| `--resume <file>` | Resume an interrupted scan from a checkpoint |
+| `--checkpoint <file>` | Custom checkpoint file path (default: `<outfile>.ckpt.json`) |
+| `--no-checkpoint` | Disable writing the scan checkpoint |
+| `--cpu <int>` | Maximum CPU usage percentage (default: `60`) |
 
 #### Network
 
-| **FlagDescription** |                                                      |
-| ------------------- | ---------------------------------------------------- |
-| `--cookies <str>`   | Custom cookies (e.g., `'session=abc; token=xyz'`)    |
-| `-H <str>`          | Custom headers (e.g., `'Authorization: Bearer tok'`) |
-| `--data <str>`      | Form data for POST scanning (e.g., `'user=test'`)    |
+| **Flag** | **Description** |
+| --- | --- |
+| `--cookies <str>` | Custom cookies (e.g., `'session=abc; token=xyz'`) |
+| `-H <str>` | Custom HTTP headers (e.g., `'Authorization: Bearer tok'`) |
+| `--data <str>` | Form data for POST scanning (e.g., `'user=test'`) |
 
 #### Fuzzing
 
-| **FlagDescription**   |                                                                   |
-| --------------------- | ----------------------------------------------------------------- |
-| `--fuzz-mode <mode>`  | Attack mode: `single`, `cluster`, `pitchfork` (default: `single`) |
-| `--fuzz-replace <kw>` | Custom FUZZ keyword (default: `FUZZ`)                             |
+| **Flag** | **Description** |
+| --- | --- |
+| `--fuzz-mode <mode>` | Attack mode: `single`, `cluster`, or `pitchfork` (default: `single`) |
+| `--fuzz-replace <kw>` | Custom FUZZ keyword (default: `FUZZ`) |
 
-#### Notifications
+#### Notifications & Activation
 
-| **FlagDescription** |                                                |
-| ------------------- | ---------------------------------------------- |
-| `--telegram`        | Setup Telegram bot notifications (interactive) |
-| `--activate <key>`  | Activate subscription with activation key      |
+| **Flag** | **Description** |
+| --- | --- |
+| `--telegram` | Set up Telegram bot notifications interactively |
+| `--activate <key>` | Activate subscription using an activation key |
 
-#### Examples
+#### Web Server & Chrome
 
-bash
+| **Flag** | **Description** |
+| --- | --- |
+| `--web` | Start the GhoulSight web server interface |
+| `--chrome` | Launch Chrome for live traffic interception and URL collection |
+| `--port <int>` | Web server port (default: `8080`) |
 
+### Scan Modes
+
+| **Mode** | **Name** | **Description** |
+| --- | --- | --- |
+| `r` | Reflected | Traditional reflected XSS scanning, including POST form scanning |
+| `d` | DOM | DOM-based XSS scanning |
+| `c` | Context-Aware | AI-powered context detection and intelligent payload generation |
+| `f` | Fuzz | FUZZ keyword-based scanning (ffuf-style) |
+
+> **Note:** Only one scan mode can be selected per run.
+
+### Examples
+
+```bash
+# Scan a single URL
+./ghoulsight -u "https://example.com/page?id=1" -m c
+
+# Scan URLs from a file
+./ghoulsight -l urls.txt -m r --file payloads.txt -o results.txt
+
+# Crawl and scan a domain
+./ghoulsight --domain example.com --depth 3 -m d -v
+
+# Use a target as a crawl root
+./ghoulsight -u example.com -crawl --depth 3 -m r -v
+
+# Scan a raw HTTP request
+./ghoulsight -r request.txt --file payloads.txt -v -o results.txt
+
+# FUZZ keyword-based scanning
+./ghoulsight -u "https://example.com/api/FUZZ/users" -m f --fuzz-mode cluster
+
+# Start the web server
+./ghoulsight --web --port 8080
+
+# Launch Chrome for live traffic interception and scanning
+./ghoulsight --chrome -m r
 ```
-# Reflected XSS scan with custom headers
-./ghoulsight -u "https://example.com/page?id=1" -m r -H "Authorization: Bearer token"
 
-# DOM scan with verbose output
-./ghoulsight -u "https://example.com/search?q=test" -m d -v
-
-# Context‑aware scan with custom payloads
-./ghoulsight -u "https://example.com/profile?user=admin" -m c --file ./my_payloads/
-
-# Fuzz scan with cluster bomb mode
-./ghoulsight -u "https://example.com/api?param=FUZZ&other=value" -m f --fuzz-mode cluster
-
-# Crawl domain and scan with reflected + DOM
-./ghoulsight --domain example.com --depth 3 -m r,d -t 20
-
-# Bulk scan from list file
-./ghoulsight -l urls.txt -m r,d,c -o results.txt
-```
-
----
-
-## 🔍 Scan Modes
-
-| **ModeFlagDescription** |     |                                                                             |
-| ----------------------- | --- | --------------------------------------------------------------------------- |
-| **Reflected**           | `r` | Traditional reflected XSS (GET/POST)                                        |
-| **DOM**                 | `d` | DOM‑based XSS detection                                                     |
-| **Context‑Aware**       | `c` | AI‑powered dynamic payload generation (does **not** require a payload file) |
-| **Fuzz**                | `f` | FUZZ keyword‑based scanning                                                 |
-
-> Modes can be combined: `-m r,d,c` runs all three simultaneously.
-
----
 
 ## 📁 Payload Configuration
 
@@ -249,54 +249,56 @@ bash
 
 ## 🏆 Comparison with Other XSS Scanners
 
-| **FeatureGhoulSightDalfoxXSStrikeXSS0r** |     |   |   |   |
-| ---------------------------------------- | --- | - | - | - |
-| Browser‑verified (zero false positives)  | ✅   | ❌ | ❌ | ✅ |
-| Web UI with bulk scan queue              | ✅\* | ❌ | ❌ | ❌ |
-| Persistent result storage                | ✅\* | ❌ | ❌ | ❌ |
-| Path‑based XSS detection                 | ✅   | ✅ | ✅ | ✅ |
-| Context‑aware payload generation         | ✅   | ✅ | ✅ | ❌ |
-| Checkpoint & resume                      | ✅\* | ❌ | ❌ | ❌ |
-| Browser extension support                | ✅\* | ❌ | ❌ | ❌ |
-| Direct browser integration               | ✅\* | ❌ | ❌ | ❌ |
+| Feature | GhoulSight | Dalfox | XSStrike | XSS0r |
+|---------|:---:|:---:|:---:|:---:|
+| Browser‑verified (zero false positives) | ✅ | ❌ | ❌ | ✅ |
+| Web UI with bulk scan queue | ✅* | ❌ | ❌ | ❌ |
+| Persistent result storage | ✅* | ❌ | ❌ | ❌ |
+| Path‑based XSS detection | ✅ | ✅ | ❌ | ✅ |
+| Context‑aware payload generation | ✅ | ✅ | ✅ | ❌ |
+| Checkpoint & resume | ✅* | ❌ | ❌ | ✅ |
+| Browser extension support | ✅* | ❌ | ❌ | ❌ |
+| Direct browser integration | ✅* | ❌ | ❌ | ❌ |
 
 > \*Available in the **full version** – see Licensing for details.
 
 GhoulSight combines all these features into one professional, easy‑to‑use tool, and remains actively maintained.
 
 ---
+## 📊 Subscription Plans
 
-## 📜 Licensing
+Choose the plan that fits your needs. **100% of every subscription fee is donated directly to the Palestinian people.**
 
-GhoulSight uses a subscription‑based licensing model.
+| Feature |  Trial |  Pro |
+|---------|:---:|:---:|
+| **Price** | Free | $5/month |
+| **CLI Scans** | 50 runs | Unlimited |
+| **Web Interface** | 1-hour sessions | Unlimited |
+| **Reflected XSS** | ✅ | ✅ |
+| **DOM‑Based XSS** | ✅ | ✅ |
+| **Context‑Aware (AI)** | ✅ | ✅ |
+| **Fuzz Scanning** | ✅ | ✅ |
+| **Domain Crawling** | ✅ | ✅ |
+| **Path‑Based XSS** | ✅ | ✅ |
+| **Browser Extension** | ❌ | ✅ |
+| **Web UI Dashboard** | ❌ | ✅ |
+| **Bulk Scan Queue** | ❌ | ✅ |
+| **Checkpoint & Resume** | ✅ | ✅ |
+| **Advanced WAF Evasion** | ✅ | ✅ |
 
-> **100% of every subscription fee is donated directly to the Palestinian people.**
-> Every license feeds a family, treats a wound, and helps rebuild destroyed homes.
 
-### Trial Mode
+---
 
-- **300 trial runs** on first installation – no activation required.
-- Each run decrements the trial counter.
-- Trial runs are preserved when activating a subscription.
+### 🔑 Activation
 
-### Subscription
-
-- **30‑day license** per activation.
-- Machine‑bound activation.
-- To activate:
-  1. Run `./ghoulsight --activate`
-  2. Send the displayed **Request Key** to [@ractiurd](https://t.me/ractiurd) on Telegram.
-  3. Receive your **Activation Key** and enter it.
-
-bash
-
-```
-# Interactive activation
+```bash
+# Start interactive activation
 ./ghoulsight --activate
 
-# Activate with key
+# Activate with your key
 ./ghoulsight --activate <activation_key>
 ```
+
 
 ### Status Display
 
@@ -309,9 +311,17 @@ bash
 
 ---
 
+---
+
+<div align="center">
+
 ## 🇵🇸 We Stand with Palestine
 
-\<div align="center"> \<strong>100% of every subscription fee is donated directly to the Palestinian people.\</strong> \</div>
+**100% of every subscription fee will be donated directly to the Palestinian people.**
+
+</div>
+
+---
 
 ### The Reality We Cannot Ignore
 
@@ -344,19 +354,7 @@ Every scan you run with GhoulSight helps fund real aid for real people. Your sub
 
 Or contact [@ractiurd](https://t.me/ractiurd) on Telegram for alternative payment methods.
 
----
 
-## 🌐 Full Version (Not in Public Release)
-
-The public release excludes the following features (available in the full version):
-
-- **Web Server & Web UI** – Browser‑based dashboard for scan management and real‑time monitoring (`--web --port`).
-- **Chromium Extension** – In‑page XSS testing and manual payload injection.
-- **Advanced WAF Evasion** – Enhanced bypass techniques with automatic payload transformation.
-
-For access to the full version, contact [@ractiurd](https://t.me/ractiurd).
-
----
 
 ## 👨‍💻 Credits
 
@@ -378,8 +376,10 @@ This project is **closed‑source** and commercially licensed. Unauthorised dist
 
 ---
 
-\<p align="center"> \<sub>Built with ❤️ by \<a href="https\://t.me/ractiurd">Ractiurd\</a>\</sub> \</p> \`\`\`
+<p align="center">
+  <sub>Built with ❤️ by <a href="https://t.me/ractiurd">Ractiurd</a></sub>
+</p>
 
 ---
 
-Copy the entire block above, paste it into a new file, and save it as `README.md`.
+
